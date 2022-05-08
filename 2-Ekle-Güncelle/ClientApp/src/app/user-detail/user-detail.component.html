@@ -1,0 +1,37 @@
+<div class="container-fluid mt-4 p-5">
+  <div class="row ">
+    <div class="col-md-6 p-5">
+      <form #userUpdateForm="ngForm">
+        <div class="form-group">
+          <input type="text"  class="form-control" [(ngModel)]="user.firstName" name="user.firstName">
+        </div>
+        <div class="form-group">
+          <input type="text"  class="form-control" [(ngModel)]="user.lastName" name="user.lastName">
+        </div>
+        <div class="form-group">
+          <input type="text"  class="form-control" [(ngModel)]="user.phone" name="user.phone">
+        </div>
+        <div class="form-group">
+          <select [(ngModel)]="user.gender" class="form-control" name="user.gender">
+                <option value="Erkek">Erkek</option>
+                <option value="Kadın">Kadın</option>
+          </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="onUpdate()">Güncelle</button>
+      </form>
+    </div>
+    <div class="col-md-6 p-5">
+      <div class="row">
+        <img [src]="displayProfileImageUrl"  width="150" class="img-thumbnail" >
+      </div>
+
+      <div class="row mt-3">
+        <input type="file" hidden #imageUpload (change)="uploadImage($event)">
+        <button mat-raised-button color="primary" (click)="imageUpload.click()">Resim Düzenle</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
