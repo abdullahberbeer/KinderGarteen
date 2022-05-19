@@ -1,0 +1,60 @@
+<div class="container-fluid mt-5  pl-5 pr-5">
+  <div class="row">
+    <div class="col-md-12 ">
+     <h2><button mat-raised-button color="primary" [routerLink]="['/home']" ><mat-icon class="matsize">home</mat-icon></button>   / {{user.firstName}} {{user.lastName}}</h2>
+    </div>
+  </div>
+</div> <hr>
+
+<div class="container-fluid  p-5">
+  <div class="row ">
+    <div class="col-md-12 pl-5 pr-5">
+      <button type="button " mat-raised-button color="primary" class="p-2" (click)="openNoteAddModal() " [hidden]=" authService.opened==='Student'">
+      <mat-icon>add</mat-icon> Not Ver
+      </button>
+      <button type="button " mat-raised-button color="primary" class="ml-3 p-2" (click)="openNoteListModal()">
+        <mat-icon>calculate</mat-icon> Notlar
+      </button>
+    </div></div></div>
+
+<div class="container-fluid pl-5 pr-5">
+  <div class="row ">
+    <div class="col-md-6 pl-5 pr-5">
+      <form #userUpdateForm="ngForm">
+        <div class="form-group" >
+          <input type="text" [disabled]="authService.opened=='Teacher' || authService.opened==='Student'"  class="form-control" [(ngModel)]="user.firstName" name="user.firstName">
+        </div>
+        <div class="form-group">
+          <input type="text" [disabled]="authService.opened=='Teacher' || authService.opened==='Student'"  class="form-control" [(ngModel)]="user.lastName" name="user.lastName">
+        </div>
+        <div class="form-group">
+          <input type="text" [disabled]="authService.opened=='Teacher' || authService.opened==='Student'" class="form-control" [(ngModel)]="user.phone" name="user.phone">
+        </div>
+        <div class="form-group">
+          <select [(ngModel)]="user.gender" class="form-control" [disabled]="authService.opened=='Teacher' || authService.opened==='Student'" name="user.gender">
+                <option value="Erkek">Erkek</option>
+                <option value="Kadın">Kadın</option>
+          </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary float-right" (click)="onUpdate()" [hidden]="authService.opened=='Teacher' || authService.opened==='Student'">Güncelle</button>
+      </form>
+    </div>
+    <div class="col-md-6 pl-5 pr-5">
+      <div class="row">
+        <img [src]="displayProfileImageUrl"  width="150" class="img-thumbnail" >
+      </div>
+
+      <div class="row mt-3">
+        <input type="file" hidden #imageUpload (change)="uploadImage($event)">
+        <button mat-raised-button color="primary" (click)="imageUpload.click()" [hidden]="authService.opened==='Student'">Resim Düzenle</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+

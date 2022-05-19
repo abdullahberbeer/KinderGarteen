@@ -1,0 +1,29 @@
+<div *ngIf="classes" class="container-fluid p-5">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4"  *ngFor="let item of classes">
+        <div class="card">
+
+          <div class="card-body">
+            <h3 class="card-title">{{item.name}}</h3><hr>
+            <p class="card-text">Aşağıdaki butondan {{item.name}} sınıfına ait öğrencileri listeleyebilir ve not verebilirsiniz..</p>
+            <a [routerLink]="['/classforuserslist',item.id]" routerLinkActive="router-link-active"  class="btn btn-primary">Öğrenci Listesi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div *ngIf="!classes.length" class="container-fluid p-5">
+  <div class="row">
+  <div class="col-md-12">
+    <div  class="alert alert-danger" role="alert">
+      Size ait herhangi bir sınıf bulunamadı!
+    </div>
+
+    </div></div></div>
+
